@@ -1,34 +1,34 @@
-# 👓 Virtual Try-On for Glasses & Accessories
+# Virtual Try-On for Glasses & Accessories
 
-A real-time **Computer Vision** application that detects your face using a webcam and overlays virtual accessories — sunglasses, hats, and masks — directly onto your face using facial landmark detection.
+A real-time Computer Vision application that detects your face using a webcam and overlays virtual accessories — sunglasses, hats, and masks — directly onto your face using facial landmark detection.
 
-Built with **MediaPipe Face Mesh** and **OpenCV** as part of a Computer Vision course project.
+Built with MediaPipe Face Mesh and OpenCV as part of a Computer Vision course project.
 
 ---
 
-## 📸 Demo
+## Demo
 
 | Sunglasses | Party Hat | Medical Mask |
 |------------|-----------|--------------|
 | Detected via eye landmarks | Anchored to forehead point | Placed between nose and chin |
 
-> Run the app and press `D` to cycle through accessories live!
+Run the app and press D to cycle through accessories live.
 
 ---
 
-## 🧠 How It Works
+## How It Works
 
 1. **Face Detection** — MediaPipe's Face Mesh model detects 468 facial landmarks in real time from webcam input.
 2. **Landmark Anchoring** — Specific landmark indices are used as anchor points:
-   - Glasses → outer eye corners (landmarks 33, 263)
-   - Hats → forehead point (landmark 10)
-   - Masks → nose tip + chin (landmarks 1, 152)
+   - Glasses: outer eye corners (landmarks 33, 263)
+   - Hats: forehead point (landmark 10)
+   - Masks: nose tip and chin (landmarks 1, 152)
 3. **Image Overlay** — PNG accessories with alpha transparency are resized and blended onto the frame using per-pixel alpha compositing.
-4. **Mirrored View** — The frame is horizontally flipped for a natural "mirror" feel.
+4. **Mirrored View** — The frame is horizontally flipped for a natural mirror feel.
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 virtual_tryon/
@@ -48,20 +48,20 @@ virtual_tryon/
 
 ---
 
-## ⚙️ Setup & Installation
+## Setup and Installation
 
 ### Prerequisites
 - Python 3.8 or higher
 - A working webcam
 - Git
 
-### Step 1 — Clone the repository
+### Step 1 - Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/virtual-tryon.git
-cd virtual-tryon
+git clone https://github.com/Sia2005/virtual-tryon-cv.git
+cd virtual-tryon-cv
 ```
 
-### Step 2 — Create a virtual environment (recommended)
+### Step 2 - Create a virtual environment (recommended)
 ```bash
 python -m venv venv
 
@@ -72,35 +72,35 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-### Step 3 — Install dependencies
+### Step 3 - Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 4 — Run the app
+### Step 4 - Run the app
 ```bash
 python app.py
 ```
 
-> The app will **auto-generate placeholder accessories** on the first run if none are found. You can replace them with your own PNG files with transparency (RGBA).
+The app will auto-generate placeholder accessories on the first run if none are found. You can replace them with your own PNG files with transparency (RGBA).
 
 ---
 
-## 🎮 Controls
+## Controls
 
 | Key | Action |
 |-----|--------|
-| `D` or `→` | Next accessory |
-| `A` or `←` | Previous accessory |
-| `L` | Toggle facial landmark overlay |
-| `Q` or `ESC` | Quit |
+| D | Next accessory |
+| A | Previous accessory |
+| L | Toggle facial landmark overlay |
+| Q or ESC | Quit |
 
 ---
 
-## 🖼️ Using Custom Accessories
+## Using Custom Accessories
 
-You can replace any file in the `accessories/` folder with your own PNG image:
-- Must be **PNG format with transparency (RGBA / 4 channels)**
+You can replace any file in the accessories/ folder with your own PNG image:
+- Must be PNG format with transparency (RGBA / 4 channels)
 - Glasses: horizontal orientation works best (wider than tall)
 - Hats: should have the brim at the bottom of the image
 - Masks: roughly square works well
@@ -109,31 +109,32 @@ The app handles resizing automatically based on facial proportions.
 
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 | Library | Version | Purpose |
 |---------|---------|---------|
-| `opencv-python` | ≥ 4.8.0 | Frame capture, image processing, display |
-| `mediapipe` | ≥ 0.10.0 | Face mesh & 468-point landmark detection |
-| `numpy` | ≥ 1.24.0 | Array operations for alpha blending |
+| opencv-python | 4.8.0 or higher | Frame capture, image processing, display |
+| mediapipe | 0.10.0 or higher | Face mesh and 468-point landmark detection |
+| numpy | 1.24.0 or higher | Array operations for alpha blending |
+| keyboard | latest | Global keypress detection |
 
 ---
 
-## 🔍 CV Concepts Used
+## CV Concepts Used
 
 - **Face Mesh Detection** — MediaPipe's neural network detects a 3D face mesh with 468 landmarks
 - **Facial Landmark Alignment** — Anchor points are used to correctly size and position accessories
-- **Alpha Compositing** — Per-pixel blending using the formula: `output = fg * alpha + bg * (1 - alpha)`
+- **Alpha Compositing** — Per-pixel blending using the formula: output = fg * alpha + bg * (1 - alpha)
 - **Affine Scaling** — Accessories are dynamically scaled relative to inter-eye or face width
 - **Real-time Video Processing** — Frame-by-frame processing pipeline with OpenCV VideoCapture
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 **Webcam not opening?**
 - Check that no other app is using the camera
-- Try changing `cv2.VideoCapture(0)` to `cv2.VideoCapture(1)` in `app.py`
+- Try changing cv2.VideoCapture(0) to cv2.VideoCapture(1) in app.py
 
 **Accessories misaligned?**
 - Ensure good lighting so landmarks are detected accurately
@@ -144,16 +145,19 @@ The app handles resizing automatically based on facial proportions.
 pip install mediapipe-silicon
 ```
 
+**Keys not responding?**
+- Run the script as Administrator (required for the keyboard library on Windows)
+
 ---
 
-## 📄 License
+## License
 
 This project is submitted as a course project for academic evaluation purposes.
 
 ---
 
-## 👤 Author
+## Author
 
-Your Name — [your-email@example.com]  
-Course: Computer Vision  
+Sia — GitHub: Sia2005
+Course: Computer Vision
 Submission: March 2026
